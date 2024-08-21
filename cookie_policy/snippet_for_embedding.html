@@ -1,0 +1,35 @@
+<div id="translation"></div>
+<script>
+  // Get the user's preferred language from the browser or your website's settings
+  const userLanguage = document.documentElement.lang;
+
+  // Map language codes to corresponding file names or Termly embed code (for English)
+  const languageMap = {
+    'nl': 'NL.html',
+    'fr': 'FR.html',
+    'de': 'DE.html',
+    'en': '<div name="termly-embed" data-id="bbfaaf27-bc48-44ba-9f1b-af32f6e1b5c0"></div>'
+  };
+
+  // Determine the content to embed based on the user's language
+  const contentToEmbed = languageMap[userLanguage.split('-')[0]] || 'english';
+
+  // If it's an HTML file, fetch it from GitHub; otherwise, use the content directly
+  if (contentToEmbed.endsWith('.html')) {
+    const url = `https://raw.githubusercontent.com/EmberlightBE/Policies/main/cookie_policy/${contentToEmbed}`;
+    fetch(url)
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('translation').innerHTML = html;
+      });
+  } else {
+    document.getElementById('translation').innerHTML = contentToEmbed;
+  }
+</script>
+<script type="text/javascript">(function(d, s, id) {
+  var js, tjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://app.termly.io/embed-policy.min.js";
+  tjs.parentNode.insertBefore(js, tjs);
+}(document, 'script', 'termly-jssdk'));</script>
