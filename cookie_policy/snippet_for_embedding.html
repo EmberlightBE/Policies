@@ -16,22 +16,26 @@
 
   // Map language codes to corresponding file names or Termly embed code (for English)
   const languageMap = {
-    'en': '<div name="termly-embed" data-id="c307792d-7676-463f-ab12-7f7deeb1ecc2"></div>'
+    'nl': 'NL.html',
+    'fr': 'FR.html',
+    'de': 'DE.html',
+    'pl': 'PL.html',
+    'en': '<div name="termly-embed" data-id="2444401a-9eab-413b-bae6-a65ba26556e8"></div>'
   };
 
   // Determine the content to embed based on the user's language
-  const contentToEmbed = languageMap[userLanguage.split('-')[0]] || 'EN.html';
+  const contentToEmbed = languageMap[userLanguage.split('-')[0]];
 
   // If it's an HTML file, fetch it from GitHub; otherwise, use the content directly
   if (contentToEmbed.endsWith('.html')) {
-    const url = `https://raw.githubusercontent.com/EmberlightBE/Policies/main/shipping_policy/${contentToEmbed}`;
+    const url = `https://raw.githubusercontent.com/EmberlightBE/Policies/main/cookie_policy/${contentToEmbed}`;
     fetch(url)
       .then(response => response.text())
       .then(html => {
         document.getElementById('translation').innerHTML = html;
       });
   } else {
-    document.getElementById('translation').innerHTML = contentToEmbed;
+    document.getElementById('translation').innerHTML = languageMap['en'];
   }
 </script>
 <script type="text/javascript">(function(d, s, id) {
