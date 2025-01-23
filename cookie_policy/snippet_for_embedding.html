@@ -13,6 +13,7 @@
 
   // Get the user's preferred language from the browser or your website's settings
   const userLanguage = getWebsiteLanguage();
+  console.log("Language: " + userLanguage);
 
   // Map language codes to corresponding file names or Termly embed code (for English)
   const languageMap = {
@@ -25,6 +26,7 @@
 
   // Determine the content to embed based on the user's language
   const contentToEmbed = languageMap[userLanguage.split('-')[0]];
+  console.log("Content to embed: " + contentToEmbed);
 
   // If it's an HTML file, fetch it from GitHub; otherwise, use the content directly
   if (contentToEmbed.endsWith('.html')) {
