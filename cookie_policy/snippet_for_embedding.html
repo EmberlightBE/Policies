@@ -1,4 +1,4 @@
-<div id="translation"></div>
+<div id="cookie-policy-translation"></div>
 <script>
 
   function getWebsiteLanguage() {
@@ -34,10 +34,10 @@
     fetch(url)
       .then(response => response.text())
       .then(html => {
-        document.getElementById('translation').innerHTML = html;
+        document.getElementById('cookie-policy-translation').innerHTML = html;
       });
   } else {
-    document.getElementById('translation').innerHTML = languageMap['en'];
+    document.getElementById('cookie-policy-translation').innerHTML = languageMap['en'];
   }
 </script>
 <script type="text/javascript">(function(d, s, id) {
