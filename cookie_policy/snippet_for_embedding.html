@@ -1,14 +1,14 @@
 <div id="cookie-policy-translation"></div>
-<script>
+<script type="text/javascript">
 
   function getWebsiteLanguage() {
-      const documentLang = document.documentElement.lang;
-      if (documentLang) {
-          return documentLang;
-      }
-      
-      // Fallback to browser language
-      return navigator.language || navigator.userLanguage;
+    const documentLang = document.documentElement.lang;
+    if (documentLang) {
+      return documentLang;
+    }
+
+    // Fallback to browser language
+    return navigator.language || navigator.userLanguage;
   }
 
   // Get the user's preferred language from the browser or your website's settings
@@ -32,18 +32,20 @@
   if (contentToEmbed.endsWith('.html')) {
     const url = `https://raw.githubusercontent.com/EmberlightBE/Policies/main/cookie_policy/${contentToEmbed}`;
     fetch(url)
-      .then(response => response.text())
-      .then(html => {
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (html) {
         document.getElementById('cookie-policy-translation').innerHTML = html;
       });
   } else {
     document.getElementById('cookie-policy-translation').innerHTML = languageMap['en'];
   }
 </script>
-<script type="text/javascript">(function(d, s, id) {
-  var js, tjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "https://app.termly.io/embed-policy.min.js";
-  tjs.parentNode.insertBefore(js, tjs);
-}(document, 'script', 'termly-jssdk'));</script>
+<script type="text/javascript">(function (d, s, id) {
+    var js, tjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://app.termly.io/embed-policy.min.js";
+    tjs.parentNode.insertBefore(js, tjs);
+  }(document, 'script', 'termly-jssdk'));</script>
