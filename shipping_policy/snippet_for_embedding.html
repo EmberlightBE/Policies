@@ -1,43 +1,51 @@
-<div id="translation"></div>
-<script>
+<div id="shipping-policy-translation"></div>
+<script type="text/javascript">
 
   function getWebsiteLanguage() {
-      const documentLang = document.documentElement.lang;
-      if (documentLang) {
-          return documentLang;
-      }
-      
-      // Fallback to browser language
-      return navigator.language || navigator.userLanguage;
+    const documentLang = document.documentElement.lang;
+    if (documentLang) {
+      return documentLang;
+    }
+
+    // Fallback to browser language
+    return navigator.language || navigator.userLanguage;
   }
 
   // Get the user's preferred language from the browser or your website's settings
   const userLanguage = getWebsiteLanguage();
+  console.log("Language: " + userLanguage);
 
   // Map language codes to corresponding file names or Termly embed code (for English)
   const languageMap = {
+    'nl': 'NL.html',
+    'fr': 'FR.html',
+    'de': 'DE.html',
+    'pl': 'PL.html',
     'en': '<div name="termly-embed" data-id="c307792d-7676-463f-ab12-7f7deeb1ecc2"></div>'
   };
 
   // Determine the content to embed based on the user's language
-  const contentToEmbed = languageMap[userLanguage.split('-')[0]] || 'EN.html';
+  const contentToEmbed = languageMap[userLanguage.split('-')[0]];
+  console.log("Content to embed: " + contentToEmbed);
 
   // If it's an HTML file, fetch it from GitHub; otherwise, use the content directly
   if (contentToEmbed.endsWith('.html')) {
     const url = `https://raw.githubusercontent.com/EmberlightBE/Policies/main/shipping_policy/${contentToEmbed}`;
     fetch(url)
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('translation').innerHTML = html;
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (html) {
+        document.getElementById('shipping-policy-translation').innerHTML = html;
       });
   } else {
-    document.getElementById('translation').innerHTML = contentToEmbed;
+    document.getElementById('shipping-policy-translation').innerHTML = languageMap['en'];
   }
 </script>
-<script type="text/javascript">(function(d, s, id) {
-  var js, tjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "https://app.termly.io/embed-policy.min.js";
-  tjs.parentNode.insertBefore(js, tjs);
-}(document, 'script', 'termly-jssdk'));</script>
+<script type="text/javascript">(function (d, s, id) {
+    var js, tjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://app.termly.io/embed-policy.min.js";
+    tjs.parentNode.insertBefore(js, tjs);
+  }(document, 'script', 'termly-jssdk'));</script>

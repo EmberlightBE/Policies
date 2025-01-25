@@ -30,7 +30,7 @@
 
   // If it's an HTML file, fetch it from GitHub; otherwise, use the content directly
   if (contentToEmbed.endsWith('.html')) {
-    const url = `https://raw.githubusercontent.com/EmberlightBE/Policies/main/privacy_policy/${contentToEmbed}`;
+    const url = `https://raw.githubusercontent.com/EmberlightBE/Policies/main/return_policy/${contentToEmbed}`;
     fetch(url)
       .then(function (response) {
         return response.text();
